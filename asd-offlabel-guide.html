@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ASD Off-Label Prescribing Quick Guide</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; margin: 0; background: #f6f7f9; color:#111; }
+    header { padding: 18px 16px; background: #fff; border-bottom: 1px solid #e6e8ee; }
+    header h1 { margin: 0; font-size: 18px; }
+    header p { margin: 6px 0 0; font-size: 13px; color: #444; line-height: 1.35; }
+    main { max-width: 980px; margin: 0 auto; padding: 16px; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 900px){ .grid { grid-template-columns: 1fr 1fr; } }
+    .card { background: #fff; border: 1px solid #e6e8ee; border-radius: 12px; padding: 14px; }
+    .card h2 { margin: 0 0 10px; font-size: 16px; }
+    .muted { color:#555; font-size: 13px; line-height: 1.35; }
+    .pill { display:inline-block; padding: 4px 10px; border-radius: 999px; font-size: 12px; background:#eef2ff; margin-right:6px; margin-bottom:6px; }
+    .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    label { display:flex; gap:10px; align-items:flex-start; font-size:14px; margin: 8px 0; }
+    input[type="checkbox"] { margin-top: 2px; }
+    button { border:0; border-radius: 10px; padding: 10px 12px; font-size: 14px; cursor:pointer; }
+    .primary { background:#111827; color:#fff; }
+    .secondary { background:#eef2f7; color:#111; }
+    .warning { background:#fff7ed; border:1px solid #fed7aa; }
+    .ok { background:#ecfdf5; border:1px solid #a7f3d0; }
+    .divider { height:1px; background:#e6e8ee; margin:12px 0; }
+    ul { margin: 8px 0 0 18px; padding:0; }
+    li { margin: 4px 0; }
+    textarea { width:100%; min-height: 140px; border-radius: 10px; border:1px solid #d6d9e0; padding:10px; font-size: 13px; }
+    .small { font-size:12px; color:#555; }
+    .footer { margin-top: 14px; font-size: 12px; color:#444; }
+    .right { margin-left:auto; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>ASD Off-Label Prescribing Quick Guide (MVP)</h1>
+  <p><strong>Educational decision-support tool</strong> to assist symptom-targeted consideration of guanfacine ER, SSRI (fluoxetine), and leucovorin in ASD. Not a substitute for clinical judgment. Verify dosing/contraindications per organizational policy and current references. <strong>No patient data is stored.</strong></p>
+</header>
+
+<main>
+  <div class="grid">
+    <section class="card">
+      <h2>1) Select symptom targets</h2>
+
+      <label><input type="checkbox" id="sx_adhd" />
+        <div><strong>ADHD / impulsivity / hyperactivity</strong>
+          <div class="muted">Often aligns with alpha-2 agonist support.</div>
+        </div>
+      </label>
+
+      <label><input type="checkbox" id="sx_anxiety" />
+        <div><strong>Anxiety / repetitive behaviors / mood symptoms</strong>
+          <div class="muted">Consider SSRI support when clinically appropriate.</div>
+        </div>
+      </label>
+
+      <label><input type="checkbox" id="sx_language" />
+        <div><strong>Language delay / social communication challenges / cognitive rigidity</strong>
+          <div class="muted">Consider leucovorin (folinic acid) in select cases.</div>
+        </div>
+      </label>
+
+      <label><input type="checkbox" id="sx_irritability" />
+        <div><strong>Irritability / emotional dysregulation (mild–moderate)</strong>
+          <div class="muted">Use symptom-matched option(s) + behavioral supports.</div>
+        </div>
+      </label>
+
+      <label><input type="checkbox" id="sx_severe" />
+        <div><strong>Severe aggression / severe irritability</strong>
+          <div class="muted">Consider safety assessment and specialty consultation.</div>
+        </div>
+      </label>
+
+      <div class="divider"></div>
+
+      <div class="row">
+        <button class="primary" id="btn_go" type="button">Get guidance</button>
+        <button class="secondary" id="btn_reset" type="button">Reset</button>
+      </div>
+
+      <p class="footer small">
+        Tip: For QI pilots, print a QR code linking to this page and place it in provider work areas.
+      </p>
+    </section>
+
+    <section class="card" id="results">
+      <h2>2) Recommendations</h2>
+      <div id="rec_pills" class="row"></div>
+      <div id="rec_text" class="muted">Select symptoms and click <strong>Get guidance</strong>.</div>
+      <div class="divider"></div>
+      <div class="small">
+        <strong>Reminder:</strong> This tool does not replace clinical judgment. Consider comorbidities, current meds, contraindications, and organizational policy.
+      </div>
+    </section>
+  </div>
+
+  <div class="divider"></div>
+
+  <section class="card">
+    <h2>Medication cards (quick reference)</h2>
+    <div class="grid">
+      <div class="card ok">
+        <h2>Guanfacine ER</h2>
+        <div class="muted"><strong>Best for:</strong> ADHD symptoms, impulsivity, emotional dysregulation; may help irritability when driven by hyperarousal/impulsivity.</div>
+        <div class="divider"></div>
+        <div class="muted"><strong>Typical start:</strong> 1 mg PO daily (often evening)</div>
+        <div class="muted"><strong>Titrate:</strong> +1 mg every 1–2 weeks as tolerated</div>
+        <div class="muted"><strong>Typical range:</strong> 1–4 mg/day (individualize)</div>
+        <div class="divider"></div>
+        <div class="muted"><strong>Monitor:</strong> BP/HR baseline + follow-up; sedation; dizziness</div>
+        <div class="muted"><strong>Counsel:</strong> avoid abrupt discontinuation; expect early sleepiness</div>
+      </div>
+
+      <div class="card ok">
+        <h2>SSRI (Fluoxetine example)</h2>
+        <div class="muted"><strong>Best for:</strong> anxiety, repetitive behaviors, mood symptoms. Start low, go slow.</div>
+        <div class="divider"></div>
+        <div class="muted"><strong>Typical start:</strong> 2.5–5 mg PO daily</div>
+        <div class="muted"><strong>Titrate:</strong> increase every 2–4 weeks based on response/tolerability</div>
+        <div class="muted"><strong>Typical range:</strong> 10–20 mg/day (individualize)</div>
+        <div class="divider"></div>
+        <div class="muted"><strong>Monitor:</strong> activation/irritability, sleep changes, GI upset; suicidality warnings per standard practice</div>
+        <div class="muted"><strong>Counsel:</strong> benefits may take 4–6+ weeks; report worsening agitation</div>
+      </div>
+
+      <div class="card ok">
+        <h2>Leucovorin (Folinic Acid)</h2>
+        <div class="muted"><strong>Best for:</strong> language/communication challenges, cognitive rigidity; consider in select ASD cases.</div>
+        <div class="divider"></div>
+        <div class="muted"><strong>Typical start:</strong> 5 mg PO once or twice daily</div>
+        <div class="muted"><strong>Titrate:</strong> increase gradually as tolerated</div>
+        <div class="muted"><strong>Typical range:</strong> 10–25 mg/day (individualize)</div>
+        <div class="divider"></div>
+        <div class="muted"><strong>Monitor:</strong> tolerability; rare irritability/GI upset</div>
+        <div class="muted"><strong>Counsel:</strong> not a stimulant/psychotropic; benefits may be gradual</div>
+      </div>
+
+      <div class="card warning">
+        <h2>Safety / When to Refer</h2>
+        <ul>
+          <li>Severe aggression/irritability: safety assessment + specialty consultation as appropriate.</li>
+          <li>Complex comorbidity, polypharmacy, or poor response: consider child psychiatry input.</li>
+          <li>Pair meds with behavioral supports; reassess before escalation.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="card">
+    <h2>Copy/paste documentation snippet</h2>
+    <p class="muted">Generates a generic note snippet (no PHI). Edit to match your clinic style.</p>
+
+    <div class="row">
+      <button class="primary" id="btn_note" type="button">Generate note</button>
+      <button class="secondary" id="btn_copy" type="button">Copy note</button>
+      <span class="small right" id="copy_status"></span>
+    </div>
+
+    <div class="divider"></div>
+
+    <textarea id="note_box" placeholder="Click “Generate note” to create a documentation snippet..."></textarea>
+
+    <div class="divider"></div>
+
+    <div class="row">
+      <span class="muted"><strong>Quick feedback (optional):</strong></span>
+      <select id="rating">
+        <option value="">Rate helpfulness…</option>
+        <option value="1">1 (Not helpful)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 (Very helpful)</option>
+      </select>
+      <button class="secondary" id="btn_save_rating" type="button">Save rating (local)</button>
+      <span class="small" id="rating_status"></span>
+    </div>
+
+    <p class="small footer">
+      Ratings are stored only in this browser (local storage) and contain no PHI.
+    </p>
+  </section>
+
+</main>
+
+<script>
+  const el = (id) => document.getElementById(id);
+
+  const symptoms = () => ({
+    adhd: el("sx_adhd").checked,
+    anxiety: el("sx_anxiety").checked,
+    language: el("sx_language").checked,
+    irritability: el("sx_irritability").checked,
+    severe: el("sx_severe").checked
+  });
+
+  function setResults(pills, text) {
+    el("rec_pills").innerHTML = pills.map(p => `<span class="pill">${p}</span>`).join("");
+    el("rec_text").innerHTML = text;
+  }
+
+  function guidance() {
+    const s = symptoms();
+    const pills = [];
+    const reasons = [];
+
+    if (!s.adhd && !s.anxiety && !s.language && !s.irritability && !s.severe) {
+      setResults([], "Select symptoms and click <strong>Get guidance</strong>.");
+      return;
+    }
+
+    if (s.severe) {
+      pills.push("Safety first");
+      reasons.push("Severe aggression/irritability: consider urgent safety assessment and specialty consultation.");
+    }
+
+    if (s.adhd || s.irritability) {
+      pills.push("Guanfacine ER");
+      reasons.push("Consider guanfacine ER for ADHD/impulsivity and related dysregulation; monitor BP/HR and sedation.");
+    }
+
+    if (s.anxiety) {
+      pills.push("SSRI (fluoxetine example)");
+      reasons.push("Consider SSRI for anxiety/repetitive behaviors; start low, go slow; monitor for activation.");
+    }
+
+    if (s.language) {
+      pills.push("Leucovorin");
+      reasons.push("Consider leucovorin for language/communication challenges in select cases; generally well tolerated.");
+    }
+
+    const html = `<ul>${reasons.map(r => `<li>${r}</li>`).join("")}</ul>`;
+    setResults(pills, html);
+  }
+
+  function resetAll() {
+    ["sx_adhd","sx_anxiety","sx_language","sx_irritability","sx_severe"].forEach(id => el(id).checked = false);
+    setResults([], "Select symptoms and click <strong>Get guidance</strong>.");
+    el("note_box").value = "";
+    el("copy_status").textContent = "";
+    el("rating").value = "";
+    el("rating_status").textContent = "";
+  }
+
+  function buildNote() {
+    const s = symptoms();
+    const chosen = [];
+    if (s.adhd || s.irritability) chosen.push("guanfacine ER");
+    if (s.anxiety) chosen.push("SSRI (fluoxetine example)");
+    if (s.language) chosen.push("leucovorin (folinic acid)");
+
+    const medLine = chosen.length ? `Symptom-targeted options reviewed: ${chosen.join(", ")}.` : "Symptom-targeted off-label options reviewed.";
+
+    const note =
+`ASD medication decision-support (educational tool used; clinical judgment applied).
+${medLine}
+
+Shared decision-making: discussed off-label use, expected timeline of benefit, potential adverse effects, and monitoring plan. Caregiver questions addressed.
+
+Plan:
+- Consider/continue symptom-targeted therapy as clinically indicated
+- Reinforce behavioral supports and follow-up in 4–8 weeks (or sooner PRN)
+- Monitoring: BP/HR if guanfacine; activation/sleep/GI if SSRI; tolerability if leucovorin
+
+(Verify dosing/contraindications per organizational policy and current references.)`;
+
+    el("note_box").value = note;
+  }
+
+  async function copyNote() {
+    const text = el("note_box").value.trim();
+    if (!text) {
+      el("copy_status").textContent = "Generate a note first.";
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(text);
+      el("copy_status").textContent = "Copied.";
+      setTimeout(() => el("copy_status").textContent = "", 1500);
+    } catch (e) {
+      // fallback
+      el("note_box").select();
+      document.execCommand("copy");
+      el("copy_status").textContent = "Copied (fallback).";
+      setTimeout(() => el("copy_status").textContent = "", 1500);
+    }
+  }
+
+  function saveRating() {
+    const r = el("rating").value;
+    if (!r) { el("rating_status").textContent = "Select a rating."; return; }
+    const key = "asd_qi_tool_ratings";
+    const existing = JSON.parse(localStorage.getItem(key) || "[]");
+    existing.push({ rating: r, ts: new Date().toISOString() });
+    localStorage.setItem(key, JSON.stringify(existing));
+    el("rating_status").textContent = "Saved (local).";
+    setTimeout(() => el("rating_status").textContent = "", 1500);
+  }
+
+  el("btn_go").addEventListener("click", guidance);
+  el("btn_reset").addEventListener("click", resetAll);
+  el("btn_note").addEventListener("click", buildNote);
+  el("btn_copy").addEventListener("click", copyNote);
+  el("btn_save_rating").addEventListener("click", saveRating);
+</script>
+</body>
+</html>
